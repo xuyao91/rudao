@@ -16,3 +16,4 @@
 /config/database.yml
 .project
 Gemfile.lock
+.idea
