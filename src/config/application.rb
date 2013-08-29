@@ -70,12 +70,12 @@ module Rudao
 end
 
 require "pp"
-module ActiveRecord
-  module ConnectionAdapters
-    module SchemaStatements
-      def create_table(table_name, options = {})
-        super(table_name, options.reverse_merge(:options =>"ENGINE=InnoDB"))
-      end
-    end
-  end
-end
+#module ActiveRecord
+#  module ConnectionAdapters
+#    module SchemaStatements
+#      def create_table(table_name, options = {})
+#        super(table_name, options.reverse_merge(:options =>"ENGINE=InnoDB"))
+#      end
+#    end
+#  end
+#end

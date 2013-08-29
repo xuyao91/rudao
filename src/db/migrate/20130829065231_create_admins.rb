@@ -19,7 +19,7 @@ class CreateAdmins < ActiveRecord::Migration
       t.string    :current_login_ip                                   # 可选，详见Authlogic::Session::MagicColumns
       t.string    :last_login_ip 
       t.integer   :manage_type
-      t.column :deleted_at, :datetime
+      t.datetime :deleted_at
       t.timestamps
     end
   end
