@@ -55,7 +55,6 @@ module Rudao
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.autoload_paths << "#{Rails.root}/lib"  # add by xy 2012/10/09
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
@@ -71,12 +70,12 @@ module Rudao
 end
 
 require "pp"
-# module ActiveRecord
-  # module ConnectionAdapters
-    # module SchemaStatements
-      # def create_table(table_name, options = {})
-        # super(table_name, options.reverse_merge(:options =>"ENGINE=InnoDB"))
-      # end
-    # end
-  # end
-# end
+#module ActiveRecord
+#  module ConnectionAdapters
+#    module SchemaStatements
+#      def create_table(table_name, options = {})
+#        super(table_name, options.reverse_merge(:options =>"ENGINE=InnoDB"))
+#      end
+#    end
+#  end
+#end

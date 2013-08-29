@@ -36,5 +36,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-gem 'authlogic', '3.3.0'
- 
+gem 'authlogic'
+gem 'acts_as_paranoid'
