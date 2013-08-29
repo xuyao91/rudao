@@ -30,8 +30,8 @@ module Rudao
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :ja
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -58,5 +58,24 @@ module Rudao
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    if Rails.env == "production"
+      config.middleware.use ::ExceptionNotifier,
+                            :email_prefix         => "[Rudao Error]",
+                            :sender_address       => %("Rudao Application Error" <error_sender@alpha-it-system.com>),
+                            :exception_recipients => %w(Rudao@alpha-it-system.com),
+                            :sections             => %w(data request session environment backtrace)
+    end
+  end
+end
+
+require "pp"
+module ActiveRecord
+  module ConnectionAdapters
+    module SchemaStatements
+      def create_table(table_name, options = {})
+        super(table_name, options.reverse_merge(:options =>"ENGINE=InnoDB"))
+      end
+    end
   end
 end
