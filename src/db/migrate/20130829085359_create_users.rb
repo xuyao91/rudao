@@ -1,8 +1,12 @@
-class CreateAdmins < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :admins do |t|
+    create_table :users do |t|
+      t.integer   :auth_id
       t.string    :login,               :null => false                # 可选，可以用email来代替它，或者同时使用两者。
       t.string    :email,               :null => false                # 可选，可以用login来代替它，或者同时使用两者。
+      t.string    :tel
+      t.boolean   :sex
+      t.integer   :point
       #t.string    :name,                :null => false
       t.string    :crypted_password,    :null => false                # 可选，但强烈建议加上。
       t.string    :password_salt,       :null => false                # 可选，但强烈建议加上。
@@ -18,7 +22,9 @@ class CreateAdmins < ActiveRecord::Migration
       t.datetime  :last_login_at                                      # 可选，详见Authlogic::Session::MagicColumns
       t.string    :current_login_ip                                   # 可选，详见Authlogic::Session::MagicColumns
       t.string    :last_login_ip 
-      t.column :deleted_at, :datetime
+      t.integer   :sale_type
+      t.datetime :deleted_at
+
       t.timestamps
     end
   end
