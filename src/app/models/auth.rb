@@ -26,4 +26,19 @@ class Auth < ActiveRecord::Base
       end
      end
    end
+   
+   
+  def self.get_conditions params
+    conn = [[]]
+    if params[:code].present?
+      conn[0] << "code like ?"
+      conn<< params[:code].strip
+    end
+    if params[:usable].present?
+      conn[0] << "usable = ?"
+      conn << params[:usable]
+    end
+    conn[0] = conn[0].join(' and ')
+    return conn 
+  end   
 end

@@ -5,17 +5,17 @@
 </div>
 <p>请输入检索条件</p>
 <div class="searchBox">
-  
+    <%= form_tag admin_auths_path, :method =>:get do %>
       <table>
         <tr>
           <th>邀请码：</th>
-          <td><%= text_field_tag "code", params[:word], :class => "attr_value" %></td>
+          <td><%= text_field_tag "code", params[:code], :class => "attr_value" %></td>
           <th>状态：</th>
-          <td><%= text_field_tag "usable", params[:reason], :class => "attr_value" %></td>
-
+          <td><%= select_tag "usable",options_for_select([['','']] + Auth::USABLE,(params[:usable] rescue nil)) %></td>
         </tr>
       </table>
       <p><%= submit_tag "检索" %></p>
+      <% end %>
 </div>
  <%#end %>
 <div class="commonBox">
@@ -42,7 +42,7 @@
                   <% end %>
                 </tr>
         <% else %>
-            <tr><td align="center" colspan="5">dddd</td></tr>
+            <tr><td align="center" colspan="5">没有数据</td></tr>
         <% end %>
       </table>
       <h3 class="serch_b"> 检索结果： <span class="current"><%= @auths.total_entries %></span> 件 </h3>
