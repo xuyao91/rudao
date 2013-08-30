@@ -46,6 +46,54 @@ class Admin::BrandsController < Admin::BaseController
     redirect_to  :controller => "admin/brands", :action => "add"
   end
 
+  # 显示编辑品牌文本框
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def show_edit
+    params[:id].present? or (
+      render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    render :partial => 'edit', :locals => {:brand => brand}
+  end
+
+  # 取消编辑品牌文本框
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def cancel_edit
+    params[:id].present? or (
+      render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    render :partial => 'detail', :locals => {:brand => brand}
+  end
+  # 编辑品牌
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def edit
+    params[:id].present? or (
+     render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    brand.updata_attribute("actual_max_page", params[:name])
+    render :partial => 'detail', :locals => {:brand => brand}
+  end
+
   # 参数转换
   #【引数】
   #【返値】

@@ -14,5 +14,35 @@
 //= require jquery_ujs
 //= require_tree .
 function edit_brand(elem){
-
+    $.ajax('/admin/brands/show_edit',{
+        method: 'post',
+        data: {
+            "id": elem
+        },
+        success: function(transport){
+            $('#brand_' + elem).html(transport);
+        }
+    });
+}
+function cancel_edit(elem){
+    $.ajax('/admin/brands/cancel_edit',{
+        method: 'post',
+        data: {
+            "id": elem
+        },
+        success: function(transport){
+            $('#brand_' + elem).html(transport);
+        }
+    });
+}
+function edit(elem){
+    $.ajax('/admin/brands/edit',{
+        method: 'post',
+        data: {
+            "id": elem
+        },
+        success: function(transport){
+            $('#brand_' + elem).html(transport);
+        }
+    });
 }

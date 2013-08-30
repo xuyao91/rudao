@@ -36,7 +36,9 @@
     </tr>
     <% if @brands.present? %>
         <% @brands.each do |brand| %>
-            <%= render :partial => 'detail', :locals => {:brand => brand} %>
+            <tr id="brand_<%= brand.id%>">
+                <%= render :partial => 'detail', :locals => {:brand => brand} %>
+            </tr>
         <% end %>
     <% else %>
         <tr>
