@@ -1,3 +1,4 @@
+#coding: utf-8
 class Auth < ActiveRecord::Base
   # attr_accessible :title, :body
   acts_as_paranoid
