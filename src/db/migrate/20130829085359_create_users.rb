@@ -24,8 +24,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :last_login_ip 
       t.integer   :sale_type
       t.datetime :deleted_at
-
       t.timestamps
+
     end
   end
 end

@@ -26,10 +26,7 @@ module BaseHelper
             :new => "添加用户"
         },
         "users" => {
-            :new => "用户注册"
-        },
-        "admin/brands" => {
-            :add => "添加品牌"
+            :new => "Rudao"
         }
 
     }
