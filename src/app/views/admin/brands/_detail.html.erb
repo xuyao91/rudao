@@ -1,0 +1,10 @@
+<tr>
+  <td align="center"><%= brand.id %></td>
+  <td align="center"><%= brand.name %></td>
+  <td align="center"><%= brand.updated_at.try(:strftime, "%Y-%m-%d")%></td>
+  <td align="center">
+    <input type="button" value="编辑">
+    <input type="button" value="删除" onclick="if(confirm('确定要删除此数据吗？')){window.location='/admin/brands/destroy/<%= brand.id%>'}">
+    <%#=  link_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='/admin/brands/destroy/#{brand.id}'}" %>
+  </td>
+</tr>
