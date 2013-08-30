@@ -9,7 +9,7 @@ class Admin::AdminsController < Admin::BaseController
     @admin = Admin.new(params[:admin])
     if @admin.save
       flash[:notice] = "Registration successful."
-      redirect_to admin_admins_path
+      redirect_to admin_auths_path
     else
       render :action => 'new'
     end
