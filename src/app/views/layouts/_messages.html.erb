@@ -1,0 +1,11 @@
+<div id="message">
+	<% for name in [:info, :warning, :error, :notice] %>
+		<% unless flash[name].blank? %>
+			<div class="<%= [:warning, :error].include?(name) ? 'error' : 'notice' %>" id="notice">
+				<% flash[name] = "#{flash[name]}。" unless flash[name].to_s.include?('。') %>
+				<center><%=  flash[name] %></center>
+			</div>
+			<% flash[name] = nil %>
+		<% end %>
+	<% end %>
+</div>

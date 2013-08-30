@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(:version => 20130829093746) do
   end
 
   create_table "auths", :force => true do |t|
-    t.string   "code",       :null => false
-    t.integer  "usable"
+    t.string   "code",                         :null => false
+    t.boolean  "usable",     :default => true, :null => false
     t.datetime "deleted_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "banks", :force => true do |t|
