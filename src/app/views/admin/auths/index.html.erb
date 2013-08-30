@@ -1,29 +1,31 @@
+<%#coding: utf-8 %>
 <div class="pgTitle">
     <h2 class="f_l">分类一览</h2>
     <hr class="cb" />
 </div>
-<p>検索条件を入力してください。</p>
+<p>请输入检索条件</p>
 <div class="searchBox">
   
       <table>
         <tr>
-          <th>キーワード：</th>
-          <td><%= text_field_tag "word", params[:word], :class => "attr_value" %></td>
-          <th>禁止理由：</th>
-          <td><%= text_field_tag "reason", params[:reason], :class => "attr_value" %></td>
+          <th>邀请码：</th>
+          <td><%= text_field_tag "code", params[:word], :class => "attr_value" %></td>
+          <th>状态：</th>
+          <td><%= text_field_tag "usable", params[:reason], :class => "attr_value" %></td>
 
         </tr>
       </table>
-      <p><%= submit_tag "検索" %></p>
+      <p><%= submit_tag "检索" %></p>
 </div>
  <%#end %>
 <div class="commonBox">
-    <h3 class="serch_b"> 検索結果： <span class="current"><%= @auths.total_entries %></span> 件 </h3>
-    <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @auths %></span></div>
+    <h3 class="serch_b"> 检索结果： <span class="current"><%= @auths.total_entries %></span> 件 </h3>
+    <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @auths, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
       <table class="list">
         <tr>
           <th width="10%">ID</th>
-          <th width="30%">名字</th>
+          <th width="30%">邀请码</th>
+          <th width="15%">状态</th>
           <th width="15%">创建时间</th>
           <th class="action" width="15%">操作</th>
         </tr>
@@ -32,7 +34,8 @@
                 <tr>
                   <td align="center"><%= auth.id %></td>
                   <td><%= auth.code %></td>
-                  <td>ddddd<%#= date_time_format_l(genre.created_at)%></td>
+                  <td><%= auth.usable_label %></td>
+                  <td><%= date_time_format_l(auth.created_at)%></td>
                   <td class="action">
                     <%#=  link_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='/admin/genres/destroy/#{genre.id}'}" %>
                   </td>

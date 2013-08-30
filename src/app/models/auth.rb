@@ -3,7 +3,11 @@ class Auth < ActiveRecord::Base
   # attr_accessible :title, :body
   acts_as_paranoid
   belongs_to :user, :conditions => ["users.deleted_at is null"]
-  USABLE = [["可用", 0], ["不可用", 1]]
+  USABLE = [["可用", 1], ["不可用", 2]]
+  
+  def usable_label
+    USABLE.select{|usable|  break usable[0] if usable[1] == self.usable }
+  end
   
   #隨機生成邀請碼100條
   def self.generate_auth_code
