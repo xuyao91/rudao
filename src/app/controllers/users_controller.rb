@@ -1,4 +1,4 @@
-class UsersController < BaseController
+class UsersController < ApplicationController
   
   def index
     
@@ -18,6 +18,10 @@ class UsersController < BaseController
       render :action => 'new'
     end
   end
+ 
+ def new
+   pp "--------------------------------------"
+ end
  
   def edit
     

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829083121) do
+ActiveRecord::Schema.define(:version => 20130829093746) do
 
   create_table "admins", :force => true do |t|
     t.string   "login",                              :null => false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130829083121) do
 
   create_table "auths", :force => true do |t|
     t.string   "code",       :null => false
+    t.integer  "usable"
     t.datetime "deleted_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -99,12 +100,48 @@ ActiveRecord::Schema.define(:version => 20130829083121) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "shops", :force => true do |t|
+    t.string   "country",    :null => false
+    t.string   "province",   :null => false
+    t.string   "city",       :null => false
+    t.string   "area",       :null => false
+    t.string   "address",    :null => false
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "user_shops", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "shop_id",    :null => false
     t.datetime "deleted_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.integer  "auth_id"
+    t.string   "login",                              :null => false
+    t.string   "email",                              :null => false
+    t.string   "tel"
+    t.boolean  "sex"
+    t.integer  "point"
+    t.string   "crypted_password",                   :null => false
+    t.string   "password_salt",                      :null => false
+    t.string   "persistence_token",                  :null => false
+    t.string   "single_access_token",                :null => false
+    t.string   "perishable_token",                   :null => false
+    t.integer  "login_count",         :default => 0, :null => false
+    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.integer  "sale_type"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end

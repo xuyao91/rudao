@@ -24,7 +24,7 @@ module BaseHelper
     {
 
         "users" => {
-            :new => "用户注册"
+            :new => "Rudao"
         }
 
     }
