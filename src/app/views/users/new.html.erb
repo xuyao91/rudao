@@ -1,2 +1,16 @@
 <h1>Users#new</h1>
-<%= render :partial => 'form'%>
+<%= form_for :admin, :url=>users_path, :html=>{:method=>'post'} do |form| %>
+<div class="pgTitle">
+  <h2 class="f_l">新增用户</h2>
+  <div class="completeBtn newBtn">
+    <%=  form.submit "保存"%>
+    <%= button_to_function "取消", "location.href='#{admin_admins_path}'"%>
+  </div>
+  <hr class="cb" />
+</div>
+<div><%#= error_messages_for @admin %></div>    
+<div class="commonBox">
+  <%= render :partial => 'form', :locals => {:form => form }%>
+</div>
+
+<% end%>
