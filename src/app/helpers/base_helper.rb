@@ -22,7 +22,9 @@ module BaseHelper
   #【著作】by lh 2013-8-30
   def normal_action
     {
-
+        "admin/admins" => {
+            :new => "添加用户"
+        },
         "users" => {
             :new => "用户注册"
         }

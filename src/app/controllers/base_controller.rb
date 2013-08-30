@@ -1,5 +1,8 @@
 #coding: utf-8
 class BaseController < ApplicationController
+
+  #before_filter :login_required, :except => [:login]
+
   require 'erb'
   include ERB::Util
   # generate csv file through different browers!
