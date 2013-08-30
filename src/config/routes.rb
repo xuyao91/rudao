@@ -56,7 +56,23 @@ Rudao::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+  resources :users do
+
+  end
+
+  namespace :admin do
+    resources :admins do
+
+    end
+    resources :brands do
+      collection do
+        #get 'add'
+        match 'add'
+      end
+    end
+  end
+  #match 'admin/brands#add'
   #match ':controller(/:action(/:id))(.:format)'
-  match ':controller(/:action(/:id(/:page(.:format))))'
-  match ':controller(/:action(/:id(.:format)))'
+  #match ':controller(/:action(/:id(/:page(.:format))))'
+  #match ':controller(/:action(/:id(.:format)))'
 end

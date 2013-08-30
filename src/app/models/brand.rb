@@ -12,7 +12,23 @@ class Brand < ActiveRecord::Base
   #【返値】conn
   #【注意】
   #【著作】 by lh 2013-8-30
-  def self.get_conditions  params
+  def self.get_conditions params
+
     conn = [[]]
+
+    if params[:name].present?
+      conn[0] << "brands.name like ?"
+      conn << "%#{params[:name].strip}%"
+    end
+
+    if params[:id].present?
+      conn[0] << "brands.id = ?"
+      conn << params[:id]
+    end
+
+    conn[0] = conn[0].join(" and ")
+    conn.flatten!
+
+    return conn
   end
 end
