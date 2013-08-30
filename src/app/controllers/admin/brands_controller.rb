@@ -19,10 +19,6 @@ class Admin::BrandsController < Admin::BaseController
   #【著作】 by lh 2013-8-30
   def create
     brand = Brand.new(:name => params[:name])
-    pp '------------------------'
-    pp params
-    pp brand
-    pp brand.errors
     if brand.valid?
       brand.save!
     else
@@ -38,7 +34,7 @@ class Admin::BrandsController < Admin::BaseController
   #【返値】
   #【注意】
   #【著作】 by lh 2013-8-30
-  def delete
+  def destroy
     params[:id].present? or (
       redirect_to  :controller => "admin/brands", :action => "add"
     )

@@ -64,4 +64,22 @@ Rudao::Application.routes.draw do
       
     end
   end
+  resources :users do
+
+  end
+
+  namespace :admin do
+    resources :admins do
+
+    end
+
+    resources :brands do
+      collection do
+        #get 'add'
+        match 'add'
+        get '/destroy/:id', to: 'brands#destroy'
+      end
+    end
+  end
+
 end

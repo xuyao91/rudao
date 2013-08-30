@@ -36,19 +36,11 @@
     </tr>
     <% if @brands.present? %>
         <% @brands.each do |brand| %>
-            <tr>
-              <td align="center"><%= brand.id %></td>
-              <td align="center"><%= brand.name %></td>
-              <td align="center"><%= brand.updated_at.try(:strftime, "%Y-%m-%d")%></td>
-              <td align="center">
-                    <input type="button" value="编辑">
-                    <input type="button" value="删除" onclick="location.href='./delete/<%= brand.id %>'">
-              </td>
-            </tr>
+            <%= render :partial => 'detail', :locals => {:brand => brand} %>
         <% end %>
     <% else %>
         <tr>
-          <td colspan="4">暂无数据</td>
+          <td colspan="4" align="center">暂无数据</td>
         </tr>
     <% end %>
   </table>
