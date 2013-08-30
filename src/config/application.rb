@@ -55,6 +55,7 @@ module Rudao
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.autoload_paths << "#{Rails.root}/lib"  # add by xy 2012/10/09
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
@@ -80,3 +81,5 @@ require "pp"
 #  end
 #end
 require 'uuidtools'
+require 'string_util'
+include StringUtil
