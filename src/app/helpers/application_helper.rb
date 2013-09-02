@@ -9,6 +9,10 @@ module ApplicationHelper
         'admin/brands' => {
             'add'     => "品牌管理,b_sn1,sub01,sn1",
             'create' => "品牌管理,b_sn1,sub01,sn1"
+        },
+        'admin/admin_sessions' => {
+          'new' => ""
+          
         }
     }
     if hash.keys.to_a.include?(params[:controller]) && hash[params[:controller]].keys.to_a.include?(params[:action])
