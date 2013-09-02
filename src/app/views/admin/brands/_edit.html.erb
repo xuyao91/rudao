@@ -1,0 +1,7 @@
+<td align="center"><%= brand.id %></td>
+<td align="center"><%= text_field_tag "brand_name_#{brand.id}", brand.name %></td>
+<td align="center"><%= brand.updated_at.try(:strftime, "%Y-%m-%d")%></td>
+<td align="center">
+    <input type="button" value="保存" onclick="edit(<%= brand.id %>)">
+    <input type="button" value="取消" onclick="cancel_edit(<%= brand.id %>)">
+</td>

@@ -18,15 +18,22 @@ class Admin::BrandsController < Admin::BaseController
   #【注意】
   #【著作】 by lh 2013-8-30
   def create
-    brand = Brand.new(:name => params[:name])
-    if brand.valid?
-      brand.save!
+    @brand = Brand.new(:name => params[:name])
+
+    pp '--------------------------------------------'
+    pp params
+    pp @brand
+    if @brand.valid?
+      @brand.save!
+      redirect_to  :action => "add"
     else
+      pp '----------------------2'
+      pp @brand.errors
       conn = Brand.get_conditions params
       @brands = Brand.paginate(:conditions => conn,:page => params[:page] , :per_page => APP_CONFIG[:per_page], :order =>"brands.updated_at DESC")
       render :action => "add"
     end
-    redirect_to  :action => "add"
+
   end
 
   # 删除品牌
@@ -44,6 +51,54 @@ class Admin::BrandsController < Admin::BaseController
     )
     brand.delete
     redirect_to  :controller => "admin/brands", :action => "add"
+  end
+
+  # 显示编辑品牌文本框
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def show_edit
+    params[:id].present? or (
+      render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    render :partial => 'edit', :locals => {:brand => brand}
+  end
+
+  # 取消编辑品牌文本框
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def cancel_edit
+    params[:id].present? or (
+      render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    render :partial => 'detail', :locals => {:brand => brand}
+  end
+  # 编辑品牌
+  #【引数】
+  #【返値】
+  #【注意】
+  #【著作】 by lh 2013-8-30
+  def edit
+    params[:id].present? or (
+     render :text => ""
+    )
+    brand = Brand.where(:id => params[:id]).first
+    brand.present? or (
+      render :text => ""
+    )
+    brand.update_attribute("name", params[:name])
+    render :partial => 'detail', :locals => {:brand => brand}
   end
 
   # 参数转换
