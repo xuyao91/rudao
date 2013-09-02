@@ -5,6 +5,7 @@ class Brand < ActiveRecord::Base
   has_many :patterns, :conditions => ["patterns.deleted_at is null"]
 
   validates :name, :presence => true #name必须存在
+  validates :name, :uniqueness => true
 
 
   # 品牌查询条件

@@ -59,16 +59,12 @@ Rudao::Application.routes.draw do
   #match ':controller(/:action(/:id))(.:format)'
   # match ':controller(/:action(/:id(/:page(.:format))))'
   # match ':controller(/:action(/:id(.:format)))'
-  namespace :admin do
-    resources :auths do
-
-    end
-  end
   resources :users do
 
   end
 
   namespace :admin do
+    resources :auths
     resources :admins do
 
     end
@@ -78,11 +74,8 @@ Rudao::Application.routes.draw do
         #get 'add'
         match 'add'
         get '/destroy/:id', to: 'brands#destroy'
-
       end
     end
   end
-  match 'admin/brands/show_edit/:id', to: 'admin/brands#show_edit'
-  #match ':controller(/:action(/:id))', :controller => /admin\/[^\/]+/
-  #match ':controller(/:action(/:id(.:format)))'
+
 end

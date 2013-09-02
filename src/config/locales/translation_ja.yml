@@ -1,0 +1,15 @@
+ja:
+    activerecord:
+      models:
+        genre: "分类"
+        admin: "管理员"
+
+      attributes:
+        genre:
+          name: "名字"  #g
+        admin:
+          login: "登录账号"
+          name: "昵称"
+          password: "密码"
+          password_confirmation: "确认密码"
+          manage_type: "管理员类型"
