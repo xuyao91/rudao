@@ -44,7 +44,7 @@ private
   def require_admin
     unless current_admin
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = I18n.t(:no_login)
         redirect_to admin_login_url
         return false
       end
@@ -53,7 +53,7 @@ private
   def require_no_admin
     if current_admin
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = I18n.t(:no_logout)
         redirect_to account_url
         return false
       end

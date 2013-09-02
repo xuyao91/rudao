@@ -1,9 +1,10 @@
 #coding: utf-8
-class Admin::AuthsController < ApplicationController
+class Admin::AuthsController < Admin::BaseController
   
   before_filter :find_auth, :only=>[:destroy]
   
   def index
+    pp "*****************-",current_admin
     conn = Auth.get_conditions params
     @auths = Auth.paginate(:conditions=>conn,:page => params[:page] || 1, :per_page => APP_CONFIG[:per_page], :order => 'id DESC')
   end

@@ -15,6 +15,8 @@ ja:
   admin_not_exist: "管理员不存在"
   successfully_login: "登录成功"
   successfully_logout: "成功退出"
+  no_login: "请先登录"
+  no_logout: "请先退出登录"
   date:
     abbr_day_names:
     - 日
