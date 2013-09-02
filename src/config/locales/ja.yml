@@ -13,6 +13,8 @@ ja:
   no_datas: "还没有数据哦！"
   registration_successful: "注册成功"
   admin_not_exist: "管理员不存在"
+  successfully_login: "登录成功"
+  successfully_logout: "成功退出"
   date:
     abbr_day_names:
     - 日

@@ -7,8 +7,8 @@ class Admin::AdminSessionsController < ApplicationController
   def create
     @admin_session = AdminSession.new(params[:admin_session])
     if @admin_session.save
-      flash[:notice] = "Successfully logged in."
-      redirect_to admin_genres_path
+      flash[:notice] = I18n.t(:successfully_login)
+      redirect_to admin_auths_path
     else
       render :action => 'new'
     end
@@ -17,7 +17,7 @@ class Admin::AdminSessionsController < ApplicationController
   def destroy
     @admin_session = AdminSession.find
     @admin_session.destroy
-    flash[:notice] = "Successfully logged out."
+    flash[:notice] = I18n.t(:successfully_logout)
     redirect_to admin_login_path
   end
 end
