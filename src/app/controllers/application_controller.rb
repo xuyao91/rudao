@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_user_session, :current_admin, :current_admin_session
 
 private
-   #========User===========#
+   #========current_User===========#
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
