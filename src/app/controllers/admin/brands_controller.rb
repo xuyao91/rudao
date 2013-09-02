@@ -19,16 +19,10 @@ class Admin::BrandsController < Admin::BaseController
   #【著作】 by lh 2013-8-30
   def create
     @brand = Brand.new(:name => params[:name])
-
-    pp '--------------------------------------------'
-    pp params
-    pp @brand
     if @brand.valid?
       @brand.save!
       redirect_to  :action => "add"
     else
-      pp '----------------------2'
-      pp @brand.errors
       conn = Brand.get_conditions params
       @brands = Brand.paginate(:conditions => conn,:page => params[:page] , :per_page => APP_CONFIG[:per_page], :order =>"brands.updated_at DESC")
       render :action => "add"
@@ -97,8 +91,15 @@ class Admin::BrandsController < Admin::BaseController
     brand.present? or (
       render :text => ""
     )
-    brand.update_attribute("name", params[:name])
-    render :partial => 'detail', :locals => {:brand => brand}
+    brand.name = params[:name]
+    if brand.valid?
+      brand.save!
+      render :partial => 'detail', :locals => {:brand => brand}
+    else
+
+      render :partial => 'error_message', :locals => {:brand => brand}
+    end
+
   end
 
   # 参数转换

@@ -74,6 +74,20 @@ ul.ulTag li{
 	color:#000;
 	letter-spacing:2px;
 }
+.saveInput{
+    height:24px;
+    width:120px;
+    padding:1px 20px 2px;
+    border-width:1px;
+    border-color:#ccc #333 #333 #ccc;
+    *padding:2px 8px;
+    background-color:#ccc;
+    font-weight:bold;
+    font-family:Meiryo;
+    font-size:12px;
+    color:#000;
+    letter-spacing:2px;
+}
 .ret_au_box{ text-align:center;}
 /*search button on one line*/
 .searchBox input.btn_search{
@@ -379,6 +393,7 @@ fieldset table.list th{
 	letter-spacing:1px;
 	cursor:pointer;
 }
+
 .completeBtn02 input{width:55px; margin-top:8px;}
 .completeBtn03 input{
 	margin-top:10px;

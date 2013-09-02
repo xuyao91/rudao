@@ -46,7 +46,20 @@ function edit(elem){
             "name": $("#brand_name_" + elem).val()
         },
         success: function(transport){
-            $('#brand_' + elem).html(transport);
+            alert(transport);
+            if(transport.indexOf("errorExplanation") != -1){
+                if($("#errorExplanation").length > 0){
+                    $("#errorExplanation").replaceWith(transport);
+                }
+                else{
+                    $(".pgTitle").before(transport);
+                }
+                window.scrollTo(0,0);
+            }
+            else{
+                $('#brand_' + elem).html(transport);
+            }
+
         }
     });
 }

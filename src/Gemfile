@@ -42,3 +42,4 @@ gem "will_paginate", '3.0.4'
 gem 'uuidtools'
 gem "rails3-generators"
 gem "dynamic_form"
+gem "paperclip"

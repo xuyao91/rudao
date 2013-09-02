@@ -3,7 +3,7 @@ ja:
       models:
         genre: "分类"
         admin: "管理员"
-
+        brand: "品牌"
       attributes:
         genre:
           name: "名字"  #g
@@ -13,3 +13,5 @@ ja:
           password: "密码"
           password_confirmation: "确认密码"
           manage_type: "管理员类型"
+        brand:
+          name: "名称"

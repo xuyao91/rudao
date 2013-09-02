@@ -74,6 +74,9 @@ Rudao::Application.routes.draw do
         #get 'add'
         match 'add'
         get '/destroy/:id', to: 'brands#destroy'
+        match 'show_edit'
+        match 'cancel_edit'
+        match 'edit'
       end
     end
   end
