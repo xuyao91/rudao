@@ -1,0 +1,50 @@
+<%#coding: utf-8 %>
+<%#= error_messages_for :brand %>
+<div class="pgTitle">
+  <h2 class="f_l">型号添加</h2>
+  <hr class="cb" />
+</div>
+<div class="searchBox">
+
+</div>
+<div class="pgTitle">
+  <h2 class="f_l">品牌一览</h2>
+  <hr class="cb" />
+</div>
+<p>请输入检索条件</p>
+<div class="searchBox">
+  <%= form_tag "#{admin_patterns_path}" do %>
+      <table>
+        <tr>
+          <th> ID：<%= text_field_tag "id", params[:id] %></th>
+          <th>名称：<%= text_field_tag "name_2", params[:name_2] %></th>
+        </tr>
+      </table>
+      <p><%= submit_tag "检索" %></p>
+  <% end %>
+</div>
+<div class="commonBox">
+  <h3 class="serch_b"> 检索结果： <span class="current"><%= @patterns.total_entries %></span> 件 </h3>
+  <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @patterns, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
+  <table class="list">
+    <tr>
+      <th width="20%">ID</th>
+      <th width="30%">名称</th>
+      <th width="30%">最后更新时间</th>
+      <th width="20%">操作</th>
+    </tr>
+    <% if @patterns.present? %>
+        <% @patterns.each do |pattern| %>
+            <tr id="brand_<%= pattern.id%>">
+
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td colspan="4" align="center"><%= I18n.t :no_datas %></td>
+        </tr>
+    <% end %>
+  </table>
+  <h3 class="serch_b"> 检索结果： <span class="current"><%= @patterns.total_entries %></span> 件 </h3>
+  <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @patterns, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
+</div>

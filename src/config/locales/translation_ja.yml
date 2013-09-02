@@ -9,9 +9,11 @@ ja:
           name: "名字"  #g
         admin:
           login: "登录账号"
+          email: "邮箱名"
           name: "昵称"
           password: "密码"
           password_confirmation: "确认密码"
           manage_type: "管理员类型"
         brand:
           name: "名称"
+        
