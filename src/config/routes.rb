@@ -62,13 +62,12 @@ Rudao::Application.routes.draw do
   resources :users do
 
   end
-
+  match 'admin/login' =>'admin/admin_sessions#new',:as => 'admin/login'
+  match 'admin/logout' => 'admin/admin_sessions#destroy', :as => 'admin/logout'
   namespace :admin do
     resources :auths
-    resources :admins do
-
-    end
-
+    resources :admins
+    resources :admin_sessions
     resources :brands do
       collection do
         #get 'add'
