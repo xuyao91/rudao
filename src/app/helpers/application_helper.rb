@@ -10,10 +10,14 @@ module ApplicationHelper
             'add'     => "品牌管理,b_sn1,sub01,sn1",
             'create' => "品牌管理,b_sn1,sub01,sn1"
         },
-        'admin/admin_sessions' => {
-          'new' => ""
+        'admin/admins' => {
+          'index' => "管理员一览,b_sn4,sub04,sn4",
+          'new' => "新增管理员,b_sn4,sub04,sn4",
+          'edit' => "编辑管理员,b_sn4,sub04,sn4",
+          'create' => "新增管理员,b_sn4,sub04,sn4"
           
-        }
+        },
+        
     }
     if hash.keys.to_a.include?(params[:controller]) && hash[params[:controller]].keys.to_a.include?(params[:action])
       hash[params[:controller]][params[:action]].to_s.split(",")

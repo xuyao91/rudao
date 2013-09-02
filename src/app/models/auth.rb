@@ -33,7 +33,7 @@ class Auth < ActiveRecord::Base
     conn = [[]]
     if params[:code].present?
       conn[0] << "code like ?"
-      conn<< params[:code].strip
+      conn<< "%#{params[:code].strip}%"
     end
     if params[:usable].present?
       conn[0] << "usable = ?"

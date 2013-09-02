@@ -13,4 +13,19 @@ class Admin < ActiveRecord::Base
    #validates :email,           :presence => true#,:if => proc{|t|t.name.present?}
    #validates :password,       :presence => true#,:if => proc{|t|t.password.present?}
    #validates :password_confirmation, :presence => true#,:if => proc{|t|t.password_confirmation.present?}
+   
+   def self.get_conditions params
+     conn = [[]]
+     if params[:login].present?
+       conn[0] << "login like ?"
+       conn << "%#{params[:login].strip}%"
+     end
+     if params[:email].present?
+       conn[0] << "email like ?"
+       conn << "%#{params[:email].strip}%"
+     end
+     conn[0] = conn[0].join(' and ')
+     return conn
+   end
+   
 end

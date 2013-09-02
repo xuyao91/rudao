@@ -1,0 +1,53 @@
+<%#coding: utf-8 %>
+<div class="pgTitle">
+    <h2 class="f_l">管理员一览</h2>
+    <hr class="cb" />
+</div>
+<p>请输入检索条件</p>
+<div class="searchBox">
+    <%= form_tag admin_admins_path, :method =>:get do %>
+      <table>
+        <tr>
+          <th>用户名：</th>
+          <td><%= text_field_tag "login", params[:login], :class => "attr_value" %></td>
+          <th>邮件：</th>
+          <td><%= text_field_tag "email", params[:email] %></td>
+        </tr>
+      </table>
+      <p><%= submit_tag "检索" %></p>
+      <% end %>
+</div>
+ <%#end %>
+<div class="commonBox">
+    <h3 class="serch_b"> 检索结果： <span class="current"><%= @admins.total_entries %></span> 件 </h3>
+    <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @admins, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
+      <table class="list">
+        <tr>
+          <th width="10%">ID</th>
+          <th width="30%">用户名</th>
+          <th width="15%">邮件</th>
+          <th width="15%">创建时间</th>
+          <th class="action" width="15%">操作</th>
+        </tr>
+        <% if @admins.present? %>
+            <% @admins.each do |admin| %>
+                <tr>
+                  <td align="center"><%= admin.id %></td>
+                  <td><%= admin.login %></td>
+                  <td><%= admin.email %></td>
+                  <td><%= date_time_format_l(admin.created_at)%></td>
+                  <td class="action">
+                    <%#=  link_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='#{admin_auth_path(auth)}'}" %>
+                    <%#= button_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='#{admin_auth_path(auth)}'}", :method=>:delete, :class=>:destroy %>
+                    <%= link_to '删除', admin_admin_path(admin), :confirm => "确定要删除此数据吗？", :method => :delete%>
+                  </td>
+                  <% end %>
+                </tr>
+        <% else %>
+            <tr><td align="center" colspan="5"><%= I18n.t(:no_datas)%></td></tr>
+        <% end %>
+      </table>
+      <h3 class="serch_b"> 检索结果： <span class="current"><%= @admins.total_entries %></span> 件 </h3>
+      <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @admins, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
+    <hr class="cb"/>
+</div>
