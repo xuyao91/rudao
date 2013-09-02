@@ -37,7 +37,9 @@
                   <td><%= auth.usable_label %></td>
                   <td><%= date_time_format_l(auth.created_at)%></td>
                   <td class="action">
-                    <%#=  link_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='/admin/genres/destroy/#{genre.id}'}" %>
+                    <%#=  link_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='#{admin_auth_path(auth)}'}" %>
+                    <%#= button_to_function "删除", "if(confirm('确定要删除此数据吗？')){window.location='#{admin_auth_path(auth)}'}", :method=>:delete, :class=>:destroy %>
+                    <%= link_to '删除', admin_auth_path(auth), :confirm => "确定要删除此数据吗？", :method => :delete%>
                   </td>
                   <% end %>
                 </tr>
@@ -46,5 +48,6 @@
         <% end %>
       </table>
       <h3 class="serch_b"> 检索结果： <span class="current"><%= @auths.total_entries %></span> 件 </h3>
+      <div class="pagination pageTop"><span class="disabled prev_page"><%= will_paginate @auths, :params => params, :previous_label => '上一页', :next_label => '下一页' %></span></div>
     <hr class="cb"/>
 </div>

@@ -40,3 +40,5 @@ gem 'authlogic', '3.3.0'
 gem 'acts_as_paranoid'
 gem "will_paginate", '3.0.4'
 gem 'uuidtools'
+gem "rails3-generators"
+gem "dynamic_form"
