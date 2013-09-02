@@ -44,7 +44,7 @@
                   <% end %>
                 </tr>
         <% else %>
-            <tr><td align="center" colspan="5">没有数据</td></tr>
+            <tr><td align="center" colspan="5"><%= I18n.t(:no_datas)%></td></tr>
         <% end %>
       </table>
       <h3 class="serch_b"> 检索结果： <span class="current"><%= @auths.total_entries %></span> 件 </h3>
