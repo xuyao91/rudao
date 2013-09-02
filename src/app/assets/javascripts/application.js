@@ -52,7 +52,7 @@ function edit(elem){
                     $("#errorExplanation").replaceWith(transport);
                 }
                 else{
-                    $(".pgTitle").before(transport);
+                    $(".pgTitle").first.before(transport);
                 }
                 window.scrollTo(0,0);
             }
