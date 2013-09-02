@@ -78,6 +78,9 @@ Rudao::Application.routes.draw do
         match 'edit'
       end
     end
+    resources :patterns do
+
+    end
   end
 
 end

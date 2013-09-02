@@ -22,6 +22,7 @@ function edit_brand(elem){
         },
         success: function(transport){
             $('#brand_' + elem).html(transport);
+            $('#brand_name_' + elem).focus();
         }
     });
 }
@@ -34,6 +35,8 @@ function cancel_edit(elem){
         },
         success: function(transport){
             $('#brand_' + elem).html(transport);
+            $('#message').html("");
+            $("#errorExplanation").remove();
         }
     });
 }
@@ -46,18 +49,21 @@ function edit(elem){
             "name": $("#brand_name_" + elem).val()
         },
         success: function(transport){
-            alert(transport);
             if(transport.indexOf("errorExplanation") != -1){
+                $('#message').html("");
                 if($("#errorExplanation").length > 0){
                     $("#errorExplanation").replaceWith(transport);
                 }
                 else{
-                    $(".pgTitle").first.before(transport);
+                    $(".pgTitle").eq(0).before(transport);
                 }
                 window.scrollTo(0,0);
             }
             else{
+                $("#errorExplanation").remove();
                 $('#brand_' + elem).html(transport);
+                $('#message').html("<div class='notice'><p>更新成功。</p></div>");
+                window.scrollTo(0,0);
             }
 
         }

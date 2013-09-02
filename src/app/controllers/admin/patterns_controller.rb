@@ -6,7 +6,7 @@ class Admin::PatternsController < Admin::BaseController
   #【返値】
   #【注意】
   #【著作】 by lh 2013-8-30
-   def add
+   def index
      @brands = Brand.all
      conn = Pattern.get_conditions params
 
